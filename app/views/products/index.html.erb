@@ -1,0 +1,17 @@
+<% if !cart.empty? %>
+    <h2>Cart</h2>
+
+    <%= cart.each do |p| %>
+        <li><%= p %></li>
+    <% end %>
+<% end %>
+
+<h2>Add to Cart</h2>
+
+<form action="<%= add_product_path %>" method="POST">
+    <label>Product</label>
+    <%= text_field_tag (:product) %>
+
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="submit" value="add to cart">
+</form>
